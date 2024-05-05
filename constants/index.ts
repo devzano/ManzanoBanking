@@ -6,8 +6,8 @@ export const sidebarLinks = [
   },
   {
     imgURL: "/icons/dollar-circle.svg",
-    route: "/my-banks",
-    label: "My Banks",
+    route: "/banks",
+    label: "Banks",
   },
   {
     imgURL: "/icons/transaction.svg",
@@ -16,7 +16,7 @@ export const sidebarLinks = [
   },
   {
     imgURL: "/icons/money-send.svg",
-    route: "/payment-transfer",
+    route: "/transfer",
     label: "Transfer Funds",
   },
 ];
