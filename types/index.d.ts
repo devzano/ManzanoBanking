@@ -7,15 +7,15 @@ declare type SearchParamProps = {
 
 // ========================================
 
-declare type SignUpParams = {
-  firstName: string;
-  lastName: string;
-  address1: string;
-  city: string;
-  state: string;
-  postalCode: string;
-  dateOfBirth: string;
-  ssn: string;
+declare type CreateUserParams = {
+  firstName?: string;
+  lastName?: string;
+  address1?: string;
+  city?: string;
+  state?: string;
+  postalCode?: string;
+  dateOfBirth?: string;
+  ssn?: string;
   email: string;
   password: string;
 };
@@ -28,11 +28,12 @@ declare type LoginUser = {
 declare type User = {
   $id: string;
   email: string;
-  userId: string;
-  dwollaCustomerUrl: string;
-  dwollaCustomerId: string;
+  userID: string;
+  dwollaCustomerURL: string;
+  dwollaCustomerID: string;
   firstName: string;
   lastName: string;
+  name: string;
   address1: string;
   city: string;
   state: string;
@@ -42,7 +43,7 @@ declare type User = {
 };
 
 declare type NewUserParams = {
-  userId: string;
+  userID: string;
   email: string;
   name: string;
   password: string;
@@ -54,12 +55,12 @@ declare type Account = {
   currentBalance: number;
   officialName: string;
   mask: string;
-  institutionId: string;
+  institutionID: string;
   name: string;
   type: string;
   subtype: string;
-  appwriteItemId: string;
-  sharableId: string;
+  appwriteItemID: string;
+  sharableID: string;
 };
 
 declare type Transaction = {
@@ -68,7 +69,7 @@ declare type Transaction = {
   name: string;
   paymentChannel: string;
   type: string;
-  accountId: string;
+  accountID: string;
   amount: number;
   pending: boolean;
   category: string;
@@ -77,18 +78,18 @@ declare type Transaction = {
   type: string;
   $createdAt: string;
   channel: string;
-  senderBankId: string;
-  receiverBankId: string;
+  senderBankID: string;
+  receiverBankID: string;
 };
 
 declare type Bank = {
   $id: string;
-  accountId: string;
+  accountID: string;
   bankId: string;
   accessToken: string;
-  fundingSourceUrl: string;
-  userId: string;
-  sharableId: string;
+  fundingSourceURL: string;
+  userID: string;
+  sharableID: string;
 };
 
 declare type AccountTypes =
@@ -112,13 +113,13 @@ declare type Receiver = {
 };
 
 declare type TransferParams = {
-  sourceFundingSourceUrl: string;
-  destinationFundingSourceUrl: string;
+  sourceFundingSourceURL: string;
+  destinationFundingSourceURL: string;
   amount: string;
 };
 
 declare type AddFundingSourceParams = {
-  dwollaCustomerId: string;
+  dwollaCustomerID: string;
   processorToken: string;
   bankName: string;
 };
@@ -144,7 +145,7 @@ declare interface BankCardProps {
 
 declare interface BankInfoProps {
   account: Account;
-  appwriteItemId?: string;
+  appwriteItemID?: string;
   type: "full" | "card";
 }
 
@@ -175,11 +176,11 @@ declare interface PaginationProps {
 declare interface PlaidLinkProps {
   user: User;
   variant?: "primary" | "ghost";
-  dwollaCustomerId?: string;
+  dwollaCustomerID?: string;
 }
 
 // declare type User = sdk.Models.Document & {
-//   accountId: string;
+//   accountID: string;
 //   email: string;
 //   name: string;
 //   items: string[];
@@ -188,7 +189,7 @@ declare interface PlaidLinkProps {
 // };
 
 declare interface AuthFormProps {
-  type: "sign-in" | "sign-up";
+  type: "login" | "signup";
 }
 
 declare interface BankDropdownProps {
@@ -199,7 +200,7 @@ declare interface BankDropdownProps {
 
 declare interface BankTabItemProps {
   account: Account;
-  appwriteItemId?: string;
+  appwriteItemID?: string;
 }
 
 declare interface TotalBalanceBoxProps {
@@ -210,6 +211,7 @@ declare interface TotalBalanceBoxProps {
 
 declare interface FooterProps {
   user: User;
+  type?: 'mobile' | 'desktop';
 }
 
 declare interface RightSidebarProps {
@@ -225,7 +227,7 @@ declare interface SiderbarProps {
 declare interface RecentTransactionsProps {
   accounts: Account[];
   transactions: Transaction[];
-  appwriteItemId: string;
+  appwriteItemID: string;
   page: number;
 }
 
@@ -256,15 +258,15 @@ declare interface PaymentTransferFormProps {
 
 // Actions
 declare interface getAccountsProps {
-  userId: string;
+  userID: string;
 }
 
 declare interface getAccountProps {
-  appwriteItemId: string;
+  appwriteItemID: string;
 }
 
 declare interface getInstitutionProps {
-  institutionId: string;
+  institutionID: string;
 }
 
 declare interface getTransactionsProps {
@@ -281,24 +283,24 @@ declare interface CreateFundingSourceOptions {
 declare interface CreateTransactionProps {
   name: string;
   amount: string;
-  senderId: string;
-  senderBankId: string;
-  receiverId: string;
-  receiverBankId: string;
+  senderID: string;
+  senderBankID: string;
+  receiverID: string;
+  receiverBankID: string;
   email: string;
 }
 
 declare interface getTransactionsByBankIdProps {
-  bankId: string;
+  bankID: string;
 }
 
-declare interface signInProps {
+declare interface loginProps {
   email: string;
   password: string;
 }
 
 declare interface getUserInfoProps {
-  userId: string;
+  userID: string;
 }
 
 declare interface exchangePublicTokenProps {
@@ -308,21 +310,21 @@ declare interface exchangePublicTokenProps {
 
 declare interface createBankAccountProps {
   accessToken: string;
-  userId: string;
-  accountId: string;
-  bankId: string;
-  fundingSourceUrl: string;
-  sharableId: string;
+  userID: string;
+  accountID: string;
+  bankID: string;
+  fundingSourceURL: string;
+  sharableID: string;
 }
 
 declare interface getBanksProps {
-  userId: string;
+  userID: string;
 }
 
 declare interface getBankProps {
-  documentId: string;
+  documentID: string;
 }
 
 declare interface getBankByAccountIdProps {
-  accountId: string;
+  accountID: string;
 }
